@@ -1,0 +1,222 @@
+@import './variables';
+body{
+    overflow: hidden;
+    background: gainsboro;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar{
+    background-color:white;
+    position: absolute;
+    height: 100vh;
+    padding: 2rem 3rem;
+    top: 0;
+    width: 13rem;
+    left: 0;
+    transition:all .3s ease-in-out;
+    
+    
+}
+
+
+
+.logoContainer{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 25px;
+    padding-bottom: 2rem;
+    .logo{
+        padding: 9Px;
+        width: 25px;
+        height: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        background-color: $primary;
+        color: $white;
+        border-radius: 6px;
+    }
+    h2{
+        color: $Dark_primary;
+        border-bottom: 4px solid transparent;
+        &:hover{
+            border-bottom: 4px solid $Dark_primary;
+            transition: .3s linear;
+        }
+    }
+}
+.profileContainer{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 22px;
+    margin: 1.5rem 0 3rem;
+    img{
+        width: 42px;
+        border-radius: 50%;
+    }
+    h3{
+        color: $Dark_primary;
+    }
+    p{
+        font-size: 13px;
+        color: $lightGray;
+    }
+}
+
+.sidebarContent{
+    ul{
+        list-style: none;
+
+        li{
+            margin-bottom: 1rem;
+            
+            a{
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                
+                .icon{
+                    color: $darkgray;
+                    font-size:1.7rem;
+                    padding-left: .5rem;
+                }
+                span{
+                    font-size: 1.01rem;
+                    padding-left: 2rem;
+                    font-weight: 500;
+                    color: $lightGray;
+                }
+              
+            }
+            &:hover{
+                border-radius: 6px;
+                transition: .3s all linear;
+                background-color:$very_lightGray ;
+            }
+            &.active{
+                span{
+                  
+                    color: $light_primary;
+                }
+                border-radius: 6px;
+                background-color: $veryLight_primary;
+            }
+           
+        }
+    }
+}
+.burgerContainer{
+    position: relative;
+    height: 50px;
+    transition: all .3s ease-in-out;
+    &::before{
+        content: '';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 2px;
+        width: 100%;
+        background-color: $lightGray;
+        transition: all .3s ease-in-out;
+    }
+
+    .menu{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color:$primary;
+    border-radius: 50%;
+    right: -70px;
+    height: 35px;
+    width: 35px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    span{
+        border-radius: 2rem;
+        height: 3px;
+        width: 25px;
+        background: $primary;
+        z-index: 20;
+        position: relative;
+        transition:all .3s linear;
+        &:after{
+            content: '';
+            position: absolute;
+            top: 7px;
+            left: 0;
+            width: 25px;
+            height: 3px;
+            background: $white;
+            transition: all .3s ease-in-out;
+            transform: translateY(-7px) rotate(45deg);
+        }
+        &::before{
+            content: '';
+            position: absolute;
+            top: -7px;
+            left: 0;
+            width: 25px;
+            height: 3px;
+            background: $white;
+            transition: all .3s ease-in-out;
+            transform: translateY(7px) rotate(-45deg)
+        }
+    }
+    }
+}
+
+.sidebar.active{
+    width: 3rem;
+    transition: all .3s ease-in-out;
+.logoContainer{
+        h2{
+          opacity: 0;
+            }
+
+}
+.profileContainer{
+    div{
+        opacity: 0;
+    }
+}
+.sidebarContent{
+    a{
+        span{opacity: 0;}
+    }
+}
+.burgerContainer{
+        .menu{
+
+        span{
+            background: $white;
+           transition: all .3s ease-in-out;
+            &:after{
+                transition: all .3s ease-in-out;
+                transform: translateY(0) rotate(0);
+            }
+            &::before{
+                transition: all .3s ease-in-out;
+                transform: translateY(0) rotate(0)
+            }
+        }
+        }
+    }
+}
